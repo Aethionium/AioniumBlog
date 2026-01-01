@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aionium Blog</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/loading.css">
+</head>
+<body>
+    <div class="loading-container" id="loading-container">
+        <div class="balls-container" id="balls"></div>
+        <div class="particles-container" id="particles"></div>
+        <div class="text-container">
+            <div id="main-text-container">
+                <h1 id="main-text">Aionium</h1>
+                <div id="text-line"></div>
+            </div>
+        </div>
+        <div class="wave-container">
+            <canvas id="wave-canvas"></canvas>
+        </div>
+    </div>
+    <script src="js/animations.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hasLoaded = localStorage.getItem('hasLoaded');
+            if (hasLoaded) {
+                window.location.href = 'pages/home.html';
+            } else {
+                const waveCanvas = document.getElementById('wave-canvas');
+                new Wave(waveCanvas);
+                const ballsContainer = document.getElementById('balls');
+                new BallSystem(ballsContainer, 3);
+                const mainText = document.getElementById('main-text');
+                new FloatingText(mainText);
+                const particlesContainer = document.getElementById('particles');
+                new ParticleSystem(particlesContainer, 15);
+                setTimeout(() => {
+                    localStorage.setItem('hasLoaded', 'true');
+                    window.location.href = 'pages/home.html';
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

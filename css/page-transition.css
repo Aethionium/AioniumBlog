@@ -1,0 +1,40 @@
+/* ========================================== */
+/* 页面切换动画 */
+/* ========================================== */
+
+/* 页面淡入动画 */
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 页面淡出动画 */
+@keyframes pageExit {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* 内容容器动画 */
+.home-content,
+.about-content,
+.projects-content {
+    animation: pageEnter 0.12s ease-out both;
+}
+
+/* 标题栏固定不动画 */
+.header {
+    animation: none !important;
+    opacity: 1 !important;
+}

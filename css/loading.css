@@ -1,0 +1,95 @@
+/* 加载界面样式 */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(20, 19, 20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.loading-container.hidden {
+    opacity: 0;
+    transform: translateY(-100vh);
+    pointer-events: none;
+}
+
+/* 波浪容器 */
+.wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+#wave-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* 文字容器 */
+.text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+#main-text-container {
+    position: relative;
+    text-align: center;
+    display: inline-block;
+}
+
+/* 文字下划线 */
+#text-line {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    height: 2px;
+    background-color: rgba(100, 200, 255, 0.8);
+    width: 0;
+    opacity: 0;
+    animation: lineFill 1.2s ease-out forwards;
+}
+
+@keyframes lineFill {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+/* 粒子容器 */
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* 背景大球容器 */
+.balls-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
