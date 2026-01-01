@@ -1,0 +1,440 @@
+/* ========================================== */
+/* Content页面样式 */
+/* ========================================== */
+
+.content-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    z-index: -1;
+}
+
+body.dark-mode .content-background {
+    background: rgb(20, 19, 20);
+}
+
+.content-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 20px 50px;
+    z-index: 10;
+}
+
+.content-page .main-title {
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+.content-page .main-title span {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.content-page .main-title span.active {
+    display: inline;
+    opacity: 1;
+}
+
+.content-page .main-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background-color: rgba(150, 150, 150, 0.5);
+    transition: width 0.3s ease;
+}
+
+.content-page .main-title:hover::after {
+    width: 120px;
+}
+
+body.dark-mode .content-page .main-title {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-mode .content-page .main-title::after {
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+/* ========================================== */
+/* 简介区域 */
+/* ========================================== */
+
+.content-intro {
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+    color: #666;
+    text-align: center;
+    max-width: 600px;
+}
+
+body.dark-mode .content-intro {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.content-intro p {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.content-intro p.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ========================================== */
+/* 文章容器 */
+/* ========================================== */
+
+.articles-container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* ========================================== */
+/* 文章卡片 */
+/* ========================================== */
+
+.article-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(200, 200, 200, 0.3);
+}
+
+body.dark-mode .article-card {
+    background: rgba(40, 40, 40, 0.95);
+    border-color: rgba(100, 100, 100, 0.3);
+}
+
+.article-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(100, 200, 255, 0.8), rgba(100, 150, 255, 0.6));
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: top;
+}
+
+.article-card:hover::before {
+    transform: scaleY(1);
+}
+
+.article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(100, 200, 255, 0.12);
+    border-color: rgba(100, 200, 255, 0.35);
+}
+
+body.dark-mode .article-card:hover {
+    box-shadow: 0 8px 24px rgba(100, 200, 255, 0.1);
+}
+
+/* ========================================== */
+/* 文章头部 */
+/* ========================================== */
+
+.article-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.article-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.article-date {
+    font-size: 0.9rem;
+    color: #999;
+    font-weight: 500;
+}
+
+body.dark-mode .article-date {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.article-category {
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    background: rgba(100, 200, 255, 0.1);
+    border-radius: 12px;
+    color: rgba(100, 200, 255, 0.9);
+    font-weight: 600;
+}
+
+body.dark-mode .article-category {
+    background: rgba(100, 200, 255, 0.15);
+    color: rgba(150, 220, 255, 0.9);
+}
+
+.article-category span {
+    display: none;
+}
+
+.article-category span.active {
+    display: inline;
+}
+
+/* ========================================== */
+/* 状态标签 */
+/* ========================================== */
+
+.article-status {
+    display: flex;
+    gap: 8px;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge span {
+    display: none;
+}
+
+.status-badge span.active {
+    display: inline;
+}
+
+.status-wip {
+    background: rgba(255, 193, 7, 0.15);
+    color: rgba(255, 152, 0, 0.9);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+body.dark-mode .status-wip {
+    background: rgba(255, 193, 7, 0.2);
+    color: rgba(255, 193, 7, 0.9);
+}
+
+.status-published {
+    background: rgba(76, 175, 80, 0.15);
+    color: rgba(56, 142, 60, 0.9);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+body.dark-mode .status-published {
+    background: rgba(76, 175, 80, 0.2);
+    color: rgba(129, 199, 132, 0.9);
+}
+
+/* ========================================== */
+/* 文章标题 */
+/* ========================================== */
+
+.article-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .article-title {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.article-card:hover .article-title {
+    color: rgba(100, 200, 255, 0.9);
+}
+
+.article-title span {
+    display: none;
+}
+
+.article-title span.active {
+    display: inline;
+}
+
+/* ========================================== */
+/* 文章摘要 */
+/* ========================================== */
+
+.article-excerpt {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+body.dark-mode .article-excerpt {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.article-excerpt span {
+    display: none;
+}
+
+.article-excerpt span.active {
+    display: inline;
+}
+
+/* ========================================== */
+/* 文章底部 */
+/* ========================================== */
+
+.article-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.read-more-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(100, 200, 255, 0.1), rgba(100, 150, 255, 0.05));
+    border: 2px solid rgba(100, 200, 255, 0.3);
+    border-radius: 25px;
+    color: rgba(100, 200, 255, 0.9);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.read-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(100, 200, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.read-more-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.read-more-btn:hover {
+    background: linear-gradient(135deg, rgba(100, 200, 255, 0.2), rgba(100, 150, 255, 0.1));
+    border-color: rgba(100, 200, 255, 0.6);
+    transform: translateX(5px);
+}
+
+body.dark-mode .read-more-btn {
+    background: linear-gradient(135deg, rgba(100, 200, 255, 0.15), rgba(100, 150, 255, 0.08));
+    border-color: rgba(100, 200, 255, 0.4);
+    color: rgba(150, 220, 255, 0.9);
+}
+
+body.dark-mode .read-more-btn:hover {
+    background: linear-gradient(135deg, rgba(100, 200, 255, 0.25), rgba(100, 150, 255, 0.15));
+    border-color: rgba(100, 200, 255, 0.7);
+}
+
+.read-more-btn span {
+    display: none;
+    position: relative;
+    z-index: 1;
+}
+
+.read-more-btn span.active {
+    display: inline;
+}
+
+.read-more-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.read-more-btn:hover svg {
+    transform: translateX(3px);
+}
+
+/* ========================================== */
+/* 背景装饰 */
+/* ========================================== */
+
+.content-decoration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+body.dark-mode .content-decoration {
+    opacity: 0.2;
+}
+
+.content-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(100, 200, 255, 0.6);
+    border-radius: 50%;
+    animation: particleFloat 15s linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+        transform: translateY(90vh) translateX(20px) scale(1);
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(-20px) scale(0);
+        opacity: 0;
+    }
+}

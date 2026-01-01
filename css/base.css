@@ -1,0 +1,159 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f7fa;
+    transition: background-color 0.4s ease;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 200, 255, 0.3) transparent;
+}
+
+/* 自定义滚动条样式 */
+body::-webkit-scrollbar {
+    width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgba(100, 200, 255, 0.3);
+    border-radius: 3px;
+    transition: background 0.3s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 200, 255, 0.5);
+}
+
+body.dark-mode {
+    scrollbar-color: rgba(150, 220, 255, 0.3) transparent;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+    background: rgba(150, 220, 255, 0.3);
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+    background: rgba(150, 220, 255, 0.5);
+}
+
+/* 页面切换时完全隐藏滚动条和禁止滚动 */
+body.transitioning {
+    overflow: hidden !important;
+    scrollbar-width: none !important;
+}
+
+body.transitioning::-webkit-scrollbar {
+    width: 0 !important;
+    display: none !important;
+}
+
+body.transitioning::-webkit-scrollbar-track {
+    display: none !important;
+}
+
+body.transitioning::-webkit-scrollbar-thumb {
+    display: none !important;
+}
+
+/* 内容不需要滚动时隐藏滚动条 */
+body.no-scroll {
+    overflow-y: hidden !important;
+    scrollbar-width: none !important;
+}
+
+body.no-scroll::-webkit-scrollbar {
+    width: 0 !important;
+    display: none !important;
+}
+
+/* 深色模式 */
+body.dark-mode {
+    background-color: rgb(20, 19, 20);
+}
+
+/* 主页面容器 */
+.main-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.main-page.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* 背景图片 */
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../Background/01.png');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(1.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.background-image.show {
+    opacity: 1;
+}
+
+/* 蒙版 */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 200, 200, 0.3);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.overlay.show {
+    opacity: 1;
+}
+
+/* About页面背景 */
+.about-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease, background 0.4s ease;
+    pointer-events: none;
+}
+
+.about-background.show {
+    opacity: 1;
+}
+
+body.dark-mode .about-background {
+    background: rgb(20, 19, 20);
+}
